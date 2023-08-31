@@ -13,6 +13,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+
     public ResponseEntity<User> registerUser(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new RuntimeException("Username is already taken");
@@ -26,4 +28,7 @@ public class UserService {
         Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
         return existingUser.isPresent() && existingUser.get().getPassword().equals(user.getPassword());
     }
+
+
+
 }
