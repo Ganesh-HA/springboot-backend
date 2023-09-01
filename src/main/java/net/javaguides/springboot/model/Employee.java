@@ -1,57 +1,156 @@
 package net.javaguides.springboot.model;
+//
+//import jakarta.persistence.*;
+//
+//
+//@Entity
+//@Table(name = "employees")
+//public class Employee {
+//
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private long id;
+//
+//	@Column(name = "first_name")
+//	private String firstName;
+//
+//	@Column(name = "last_name")
+//	private String lastName;
+//
+//	@Column(name = "email_id")
+//	private String emailId;
+//
+//	public Employee() {
+//
+//	}
+//
+//	public Employee(String firstName, String lastName, String emailId) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.emailId = emailId;
+//	}
+//	public long getId() {
+//		return id;
+//	}
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//	public String getLastName() {
+//		return lastName;
+//	}
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
+//	public String getEmailId() {
+//		return emailId;
+//	}
+//	public void setEmailId(String emailId) {
+//		this.emailId = emailId;
+//	}
+//}
+
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 
 @Entity
-@Table(name = "employees")
-public class Employee {
-	
+public class Employee implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(name = "first_name")
-	private String firstName;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, updatable = false)
+	private Long id;
+	private String name;
+	private String email;
+	private String jobTitle;
+	private String phone;
+	private String imageUrl;
+	@Column(nullable = false, updatable = false)
+	private String employeeCode;
 
-	@Column(name = "last_name")
-	private String lastName;
-	
-	@Column(name = "email_id")
-	private String emailId;
-	
-	public Employee() {
-		
+	public Employee() {}
+
+	public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+		this.name = name;
+		this.email = email;
+		this.jobTitle = jobTitle;
+		this.phone = phone;
+		this.imageUrl = imageUrl;
+		this.employeeCode = employeeCode;
 	}
-	
-	public Employee(String firstName, String lastName, String emailId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailId = emailId;
-	}
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFirstName() {
-		return firstName;
+
+	public String getName() {
+		return name;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getLastName() {
-		return lastName;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getEmailId() {
-		return emailId;
+
+	public String getJobTitle() {
+		return jobTitle;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getEmployeeCode() {
+		return employeeCode;
+	}
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", jobTitle='" + jobTitle + '\'' +
+				", phone='" + phone + '\'' +
+				", imageUrl='" + imageUrl + '\'' +
+				'}';
 	}
 }
